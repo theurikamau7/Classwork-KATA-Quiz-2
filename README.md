@@ -1,70 +1,81 @@
-# Getting Started with Create React App
+# Python Quiz 2{Groups of 5}
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Create a component that displays chips, with the ability to specify the maximum
+number of displayed chips and the maximum text length in a chip.
 
-## Available Scripts
+Introduction: Given a component called ChipList which accepts three parameters:
 
-In the project directory, you can run:
+1. chips: the array of chips (optional);
+2. maxChips: the maximum number of chips displayed (optional);
+3. maxTextLength: the maximum length of text in a chip (optional);
 
-### `npm start`
+write logic to display the component according to the requirements specified below.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Requirements
+Display the array of chips (the chips parameter) passed to the component according
+to the following rules:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. The number of displayed chips should be controlled by the maxChips
+parameter.
+2. If the maximum number of chips to be displayed is exceeded, indicate the
+number of chips that are not shown in the aside element with
+data-testid="exceeding-text".
+3. The length of text in each chip should be controlled by the maxTextLength
+parameter.
+4. If the maximum length of text in a chip is exceeded, attach an ellipsis symbol
+(…) after the last allowed letter.
+5. If no parameters are passed or the chips array is empty, return an empty React
+Fragment.
+6. Handle the edge cases of:
+○ no data being passed to the component;
+○ an empty chips array;
+○ the chips, maxChips and maxTextLength parameters being provided in
+all possible configurations;
+○ the maxChips and maxTextLength parameters having values less than
+or equal to 0.
+7. Do not change the way the App and ChipList components are exported.
+8. ChipList is the component that will be tested against a set of Unit Tests. The
+App component is only used for simulating the behaviour in the Preview tab;
+it will be not used in the Unit Tests.
+9. Ensure that the chips are displayed in the same order as they appear in the
+chips property. Be sure to provide the correct index for each chip in the
+data-testid property.
 
-### `npm test`
+# Assumptions
+● Components and styles will be prepared upfront; your only task is to focus on
+the logic to handle the parameters.
+● Try not to alter the existing components, or some tests might fail.
+● The maxChips and maxTextLength parameters can be either a number or
+undefined.
+● The chips list can be undefined, an empty array or a non-empty array.
+Hints
+● Show the exceeding "n more items" label only if the number of chips is greater
+than the maximum quantity of chips allowed to be displayed. There is no need
+to display "0 more items". Be sure not to render the <aside> tag if there is no
+need to display the label.
+● If the maxTextLength property is less than 1, assume that all chips will only
+show the ellipsis symbol.
+● If the maxChips property is less than 1, assume that only the {n} more items
+label will be displayed.
+● Use the Preview tab to visually check the correctness of your code.
+● Use the browser's developer tools in the Preview tab to debug your code
+(console.log).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Available packages/libraries
+● React version 18.2.0
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Examples
+Given a list
+const sampleChips = [
+{ label: "123456" },
+{ label: "1234567" },
+{ label: "12345678" },
+{ label: "12345" },
+{ label: "123456789" }
+];
+and calling the <ChipList /> component with the following properties:
+<ChipList
+chips={chips}
+maxChipsDisplayed={3}
+maxTextLength={6}
+/>
