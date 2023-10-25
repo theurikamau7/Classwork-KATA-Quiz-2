@@ -1,19 +1,19 @@
+// App.js
 import React from 'react';
-import ChipList from './ChipList';
-
-const sampleChips = [
-  { label: "123456" },
-  { label: "1234567" },
-  { label: "12345678" },
-  { label: "12345" },
-  { label: "123456789" }
-];
+import ChipList from './components/ChipList';
 
 const App = () => {
+  const sampleChips = [
+    { label: "123456" },
+    { label: "1234567" },
+    { label: "12345678" },
+    { label: "12345" },
+    { label: "123456789" }
+  ];
+
   return (
     <div>
-      <h1>Chip List</h1>
-      <ChipList chips={sampleChips} maxChips={3} maxTextLength={6} />
+      <ChipList chips={sampleChips} maxChipsDisplayed={3} maxTextLength={6} />
     </div>
   );
 };
